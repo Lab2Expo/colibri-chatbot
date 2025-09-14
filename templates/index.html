@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat con il Colibrì</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; }
+    #chatbox { width: 400px; margin: 50px auto; border: 1px solid #ccc; background: white; padding: 10px; border-radius: 10px; }
+    #messages { height: 250px; overflow-y: auto; border: 1px solid #eee; padding: 5px; margin-bottom: 10px; }
+    #userInput { width: 70%; padding: 5px; }
+    button { width: 25%; padding: 5px; background: #00b894; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background: #019874; }
+  </style>
+</head>
+<body>
+  <div id="chatbox">
+    <h2>Chat con il Colibrì 🐦</h2>
+    <div id="messages"></div>
+    <input type="text" id="userInput" placeholder="Scrivi un messaggio...">
+    <button onclick="sendMessage()">Invia</button>
+  </div>
+
+  <script>
+    async function sendMessage() {
+      let input = document.getElementById("userInput").value;
+      let messages = document.getElementById("messages");
+
+      // Mostra il messaggio dell’utente
+      messages.innerHTML += `<div><b>Tu:</b> ${input}</div>`;
+
+      // Manda la richiesta al backend Flask
+      let response = await fetch("http://127.0.0.1:5000/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: input })
+      });
+
+      let data = await response.json();
+
+      // Mostra la risposta del Colibrì
+      messages.innerHTML += `<div><b>Colibrì:</b> ${data.reply}</div>`;
+
+      // Pulisce il campo input
+      document.getElementById("userInput").value = "";
+      messages.scrollTop = messages.scrollHeight; // scroll automatico
+    }
+  </script>
+</body>
+</html>
+
