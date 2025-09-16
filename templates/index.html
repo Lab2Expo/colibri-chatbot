@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>Chat con il Colibrì</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #ffffff; }
-    #chatbox { width: 300px; margin: 50px auto; border: 1px solid #7b8683; background: rgb(198, 240, 244); padding: 10px; border-radius: 10px; }
+    body { font-family: Arial, sans-serif; background: #b3e4f3; }
+    #chatbox { width: 300px; margin: 50px auto; border: 1px solid #a2bad7; background: rgb(198, 240, 244); padding: 10px; border-radius: 10px; }
     #messages { height: 250px; overflow-y: auto; border: 1px solid #6e8ade; padding: 5px; margin-bottom: 10px; }
     #userInput { width: 75%; padding: 5px; }
     button { width: 15%; padding: 5px; background: #22b800; color: white; border: none; border-radius: 5px; cursor: pointer; }
@@ -14,7 +14,7 @@
 </head>
 <body>
   <div id="chatbox">
-    <h2>Chat con il Colibrì 🐦</h2>
+    <h2>Chatta con il Colibrì 🐦</h2>
     <div id="messages"></div>
     <input type="text" id="userInput" placeholder="Scrivi un messaggio...">
     <button onclick="sendMessage()">Invia</button>
@@ -44,7 +44,14 @@
       document.getElementById("userInput").value = "";
       messages.scrollTop = messages.scrollHeight; // scroll automatico
     }
+    
+    // 👇 Listener per il tasto Enter (fuori dalla funzione!)
+document.getElementById("userInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    e.preventDefault(); // evita il ritorno a capo
+    sendMessage();      // chiama la funzione di invio
+  }
+});
   </script>
 </body>
 </html>
-
