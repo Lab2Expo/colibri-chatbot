@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Chat con il Colibrì</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #b3e4f3; }
+    body { font-family: Arial, sans-serif; background: #e7f2f0; }
     #chatbox { width: 300px; margin: 50px auto; border: 1px solid #a2bad7; background: rgb(198, 240, 244); padding: 10px; border-radius: 10px; }
     #messages { height: 250px; overflow-y: auto; border: 1px solid #6e8ade; padding: 5px; margin-bottom: 10px; }
     #userInput { width: 75%; padding: 5px; }
@@ -14,7 +14,8 @@
 </head>
 <body>
   <div id="chatbox">
-    <h2>Chatta con il Colibrì 🐦</h2>
+    <h2>Ciao!   Sono Il Colibrì 🐦</h2>
+    <h4>Chiedimi qualcosa su di noi o sul commercio Equo!</h4>
     <div id="messages"></div>
     <input type="text" id="userInput" placeholder="Scrivi un messaggio...">
     <button onclick="sendMessage()">Invia</button>
@@ -38,7 +39,8 @@
       let data = await response.json();
 
       // Mostra la risposta del Colibrì
-      messages.innerHTML += `<div><b>Colibrì:</b> ${data.reply}</div>`;
+      messages.innerHTML += `<div><b>Colibrì:</b> ${data.reply.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>')}</div>`;
+
 
       // Pulisce il campo input
       document.getElementById("userInput").value = "";

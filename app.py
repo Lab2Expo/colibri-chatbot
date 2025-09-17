@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify, render_template
 app = Flask(__name__)
 
 responses = {
-    "ciao": "Ciao! Sono il Colibrì 🌱, benvenuto nel nostro mondo di commercio equo e solidale!",
+    "ciao": "Ciao! Sono il Colibrì 🌱, benvenuto nel nostro mondo del commercio equo e solidale!",
     "commercio": "Il commercio equo sostiene i produttori del Sud del mondo garantendo un prezzo giusto, diritti per i lavoratori e rispetto per l’ambiente.",
     "prodotti": "Vendiamo cibo, artigianato e tessili dal commercio equo, bio e solidali.",
     "dove": "Siamo a Monselice, in via … Ti aspettiamo!",
@@ -21,7 +21,7 @@ def chat():
     data = request.json
     user_message = data.get("message", "").lower()
 
-    reply = "Non ho capito bene 🤔, ma posso raccontarti del commercio equo se vuoi!"
+    reply = "Scusa, ma sto ancora imparando. Prova a riformulare la frase!"
     for key in responses:
         if key in user_message:
             reply = responses[key]
