@@ -8,7 +8,7 @@ app = Flask(__name__)
 responses = [
     (["dove", "bottega"], "Puoi trovare la nostra Bottega in centro a Monselice in Via Roma 26, Monselice (PD) — 35043. https://equocolibri.org", "all"),
     (["orari", "apertura"], "Solitamente i giorni di apertura sono: lunedì, mercoledì, giovedì, venerdì e sabato 9:30–12:00 e 15:30–19:00; Puoi anche contattarci direttamente su Instagram! https://www.instagram.com/ilcolibri.monselice/", "all"),
-    (["contattare", "informazioni"], "Se vuoi informazioni di qualunque genere scrivici su Instagram! https://www.instagram.com/ilcolibri.monselice/", "any"),
+    (["contattare", "informazioni"], "Se vuoi informazioni di qualunque genere scrivici su Instagram! https://www.instagram.com/ilcolibri.monselice/  ", "any"),
     (["negozio", "online", "spedizione"], "Noi non abbiamo un negozio online perché per noi è importante comunicare direttamente al cliente. In Bottega potrai fare un viaggio nel mondo del commercio Equo.", "all"),
     (["prodotti", "vendete"], "Sono innumerevoli i prodotti che vendiamo! Alimentari (caffè, tè, condimenti), articoli per la casa, cura del corpo, accessori e abbigliamento, borse e giochi/musica. Guarda qua! https://equocolibri.org+1", "all"),
     (["progetti", "supporto"], "I progetti sono l’essenza della Bottega. Ogni prodotto ha una storia a sé legata, pronta per essere raccontata. In vetrina troverai progetti come TRAME, BaSE Bangladesh, Naturveda, Libera Terra, Tatawelo, Smolart e altri; Scoprili nel link! https://equocolibri.org", "all"),
