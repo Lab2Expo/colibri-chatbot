@@ -39,7 +39,9 @@
       let data = await response.json();
 
       // Mostra la risposta del Colibrì
-      messages.innerHTML += `<div><b>Colibrì:</b> ${data.reply.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>')}</div>`;
+      let botDiv = document.createElement("div");
+      botDiv.innerHTML = `<b>Colibrì:</b> ${data.reply}`;
+      messages.appendChild(botDiv);
 
 
       // Pulisce il campo input
