@@ -10,7 +10,7 @@ responses = [
  "Puoi trovare la nostra Bottega in centro a Monselice in Via Roma 26, Monselice (PD) — 35043 https://www.equocolibri.org/contattaci.html", 
  "any"),
 
-(["ciao", "buongiorno", "buonsera"], 
+(["ciao", "buongiorno", "buonsera", "domanda"], 
  "Ciao, sono Il Colibrì. Fammi qualche domanda e proverò a risponderti!", 
  "any"),
 
@@ -42,8 +42,8 @@ responses = [
  "Per riconoscere se un prodotto proviene dal commercio Equo è importante leggere le informazioni riportate sull'etichetta o sul sito del produttore. Controlla la presenza di certificazioni/loghi (Fairtrade, WFTO, ecc.), l’origine, la trasparenza della filiera e le informazioni sull’impatto sociale. https://www.equocolibri.org/come-identificare-i-prodotti-del-commercio-equo-e-solidale.html", 
  "any"),
 
-(["certificazioni", "fairtrade", "wfto", "biologico", "gots"], 
- "Esistono alcune certificazioni importanti relative al commercio Equo: WFTO, Fairtrade, certificazione biologica e GOTS per il tessile; ogni certificazione ha criteri specifici. https://www.equocolibri.org/le-certificazioni.html", 
+(["certificazioni", "fairtrade", "wfto", "biologico", "gots", "riconosco", "rispettare", "rispettano"], 
+ "Esistono alcune certificazioni importanti relative al commercio Equo: WFTO, Fairtrade, certificazione biologica e GOTS per il tessile; queste certificazioni garantiscono il rispetto dei principi del Commercio Equo. https://www.equocolibri.org/le-certificazioni.html", 
  "any"),
 
 (["prezzi", "quanto costa", "perché costa di più", "prezzi equi", "giusto prezzo"], 
@@ -98,7 +98,7 @@ responses = [
  "I prodotti in Bottega seguono diversi sistemi di garanzia: WFTO, Fairtrade e altre certificazioni indipendenti. Tutte hanno lo scopo di tutelare i produttori e garantire trasparenza. https://www.equocolibri.org/commercioequoesolidale.html", 
  "any"),
 
-(["produttori", "cooperative", "artigiani", "paesi del sud", "partner"], 
+(["produttori", "cooperative", "artigiani", "paesi del sud", "partner", "mondo"], 
  "Lavoriamo con cooperative di produttori in Asia, Africa e America Latina, oltre a progetti sociali in Italia. Ognuno di loro riceve un compenso equo e opportunità di sviluppo. https://www.equocolibri.org/produttori.html", 
  "any"),
 
@@ -152,7 +152,7 @@ responses = [
  "Non abbiamo un e-commerce perché crediamo nel valore del contatto diretto con le persone 💬 Vieni a trovarci in Bottega! https://www.equocolibri.org/prodotti.html", 
  "any"),
 
-(["gastronomia", "spezie", "olio", "pasta", "vino"], 
+(["gastronomia", "spezie", "olio", "pasta", "vino", "cibo", "culinario"], 
  "Oltre al caffè e al cioccolato trovi anche pasta, riso, olio, vino e spezie da filiere etiche e sostenibili 🍷 https://www.equocolibri.org/prodotti.html", 
  "any"),
 
@@ -180,11 +180,15 @@ responses = [
  "Partecipiamo attivamente a campagne territoriali e collaboriamo con realtà locali come il Parco Buzzaccarini 🌳", 
  "any"),
 
-(["prezzi", "trasparenti", "margini", "costi", "perché costa"], 
+(["prezzi", "trasparenti", "margini", "costi", "perché costa", "economici", "economico"], 
  "I nostri prezzi sono trasparenti e raccontano un percorso di equità e sostenibilità 💶 https://www.equocolibri.org/i-prezzi-trasp8203arenti-del-commercio-equo-e-solidale.html", 
  "any"),
 
-(["storia", "nascita", "fondazione", "2004", "origini"], 
+(["differenza", "compenso", "giusto", "condizioni", "dignitoso", "dignitosamente"], 
+ "La differenza del commercio equo rispetto al commercio tradizionale sta nel garantire ai produttori un compenso giusto e condizioni di lavoro dignitose. E' proprio questo compenso giusto che permette alle persone svantaggiate di vivere dignitosamente", 
+ "any"),
+
+(["storia", "nascita", "fondazione", "2004", "origini", "nasce"], 
  "Il Colibrì nasce nel 2004 dall’incontro di studenti e donne attive sul territorio ✨ Scopri di più: https://www.equocolibri.org/la-nosta-storia.html", 
  "any"),
 
@@ -204,6 +208,10 @@ responses = [
  "Per rimanere sempre aggiornato visita la sezione 'Eventi e News' e i nostri social 📌 https://www.equocolibri.org/partecipa.html", 
  "any"),
 
+(["qualità", "controlli", "garanzie"], 
+ "Attraverso i controlli effettuati dagli enti certificatori e dalle centrali, possiamo garantirvi una qualità di primo grado dei nostri prodotti, che sono quasi sempre frutto di produzione artigianale", 
+ "any"),
+
 ]
 
 
@@ -221,6 +229,10 @@ def chat():
         welcome_msg = "Ciao! Benvenuto nella nostra chat 🐦. Posso raccontarti qualcosa sul commercio equo o sulla nostra bottega?"
         welcome_msg = re.sub(r"(https?://[^\s]+)", r'<a href="\1" target="_blank">\1</a>', welcome_msg)
         return jsonify({"reply": welcome_msg})
+    
+    # --- Salva il messaggio in un file ---
+    with open("chat_logs.txt", "a", encoding="utf-8") as f:
+        f.write(user_message + "\n")
 
     reply = "Scusa, ma sto ancora imparando. Prova a riformulare la frase!"
 
